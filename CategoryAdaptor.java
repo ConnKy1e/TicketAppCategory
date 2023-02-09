@@ -1,9 +1,9 @@
 package com.example.ticketproject.Activity.Adaptor;
 
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
@@ -13,9 +13,11 @@ import com.example.ticketproject.Activity.Domain.CategoryDomain;
 
 import java.util.ArrayList;
 
+//category adaptor to create menu for ticket types
 public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.ViewHolder> {
     ArrayList<CategoryDomain>categoryDomains;
 
+    //create array list of categorys
     public CategoryAdaptor(ArrayList<CategoryDomain> categoryDomains) {
         this.categoryDomains = categoryDomains;
     }
@@ -29,6 +31,7 @@ public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.ViewHo
         return new ViewHolder(inflate);
     }
 
+    //show the picture of ticket types e.g adult,member,child
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.categoryName.setText(categoryDomains.get(position).getTitle());
@@ -49,7 +52,7 @@ public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.ViewHo
             }
             break;
         }
-
+//get the drawable id of the picture
         int drawableResourceId=holder.itemView.getContext().getResources().getIdentifier(picUrl,"drawable",holder.itemView.getContext().getPackageName());
 
         Glide.with(holder.itemView.getContext())
@@ -62,7 +65,7 @@ public class CategoryAdaptor extends RecyclerView.Adapter<CategoryAdaptor.ViewHo
     public int getItemCount() {
         return categoryDomains.size();
     }
-
+//create the display from the recyclerview in the xml
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView categoryName;
         ImageView categoryPic;
